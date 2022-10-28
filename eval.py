@@ -1,5 +1,7 @@
 from data import COCODetection, get_label_map, MEANS, COLORS
 from yolact import Yolact
+import time
+start_time=time.time()
 from utils.augmentations import BaseTransform, FastBaseTransform, Resize
 from utils.functions import MovingAverage, ProgressBar
 from layers.box_utils import jaccard, center_size, mask_iou
@@ -1103,5 +1105,6 @@ if __name__ == '__main__':
             net = net.cuda()
 
         evaluate(net, dataset)
+    print("total_time: ", time.time() - start_time)
 
 
